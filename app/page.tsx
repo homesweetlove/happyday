@@ -6,8 +6,10 @@ import { useState } from "react";
 const RECIPIENT = "친구야";
 const GIFT_IMAGE = "/gifticon-placeholder.svg";
 
+type Phase = "intro" | "cake" | "delivery" | "celebrate";
+
 export default function Home() {
-  const [phase, setPhase] = useState<"intro" | "cake" | "celebrate">("intro");
+  const [phase, setPhase] = useState<Phase>("intro");
   const [blown, setBlown] = useState(false);
 
   const openCake = () => {
@@ -17,11 +19,20 @@ export default function Home() {
 
   const blowCandle = () => {
     if (blown) return;
+
     setBlown(true);
+
     if (typeof navigator !== "undefined" && "vibrate" in navigator) {
       navigator.vibrate?.(35);
     }
-    window.setTimeout(() => setPhase("celebrate"), 900);
+
+    window.setTimeout(() => {
+      setPhase("delivery");
+
+      window.setTimeout(() => {
+        setPhase("celebrate");
+      }, 2700);
+    }, 850);
   };
 
   const replay = () => {
@@ -91,16 +102,44 @@ export default function Home() {
               <span className="drip dripThree" />
               <span className="drip dripFour" />
             </div>
+
             <div className="sprinkles" aria-hidden="true">
               {Array.from({ length: 18 }).map((_, index) => (
                 <span key={index} className={`sprinkle sprinkle${index + 1}`} />
               ))}
             </div>
           </div>
+
           <div className="plate" />
         </div>
 
-        <p className="tapHint">{blown ? "소원 접수 완료 ✨" : "불꽃을 눌러봐"}</p>
+        <p className="tapHint">
+          {blown ? "소원 접수 완료 ✨" : "불꽃을 눌러봐"}
+        </p>
+      </section>
+
+      <section className={`scene deliveryScene ${phase === "delivery" ? "isActive" : "isHidden"}`}>
+        <div className="deliveryCopy">
+          <p className="eyebrow">잠깐, 선물이 오는 중이야</p>
+          <h2>배달 출발 🛵</h2>
+          <p>조금만 기다려줘. 금방 도착해!</p>
+        </div>
+
+        <div className="speedLine speed1" />
+        <div className="speedLine speed2" />
+        <div className="road" />
+
+        <div className="rider" aria-hidden="true">
+          <Image
+            src="/delivery-rider.svg"
+            alt=""
+            width={640}
+            height={360}
+            priority
+          />
+        </div>
+
+        <div className="deliveryArrived">선물이 도착했어요 ✓</div>
       </section>
 
       <section className={`scene celebrateScene ${phase === "celebrate" ? "isActive" : "isHidden"}`}>
@@ -121,11 +160,13 @@ export default function Home() {
         <div className="celebrateContent">
           <div className="checkBadge" aria-hidden="true">✓</div>
           <p className="eyebrow">오늘의 소원 완료</p>
+
           <h2>
             {RECIPIENT},
             <br />
             생일 축하해! 🎉
           </h2>
+
           <p className="message">
             임용 준비하느라 정말 고생 많지.
             <br />
@@ -145,6 +186,7 @@ export default function Home() {
                 <p>FOR YOU</p>
                 <strong>생일 선물 🎁</strong>
               </div>
+
               <span className="giftPill">HAPPY BIRTHDAY</span>
             </div>
 
@@ -158,8 +200,17 @@ export default function Home() {
               />
             </div>
 
+            <a
+              className="downloadButton"
+              href={GIFT_IMAGE}
+              download="birthday-gift"
+            >
+              <span aria-hidden="true">↓</span>
+              기프티콘 이미지 저장하기
+            </a>
+
             <p className="giftNote">
-              기프티콘 이미지만 바꾸면 바로 전달할 수 있어.
+              실제 기프티콘 이미지를 public 폴더에 넣고 GIFT_IMAGE 경로만 바꾸면 돼.
             </p>
           </div>
 
