@@ -140,7 +140,7 @@ export default function Home() {
         <div className="road" />
 
         <div className="rider" aria-hidden="true">
-          <img src="/delivery-rider.svg" alt="" />
+          <img src="/delivery-rider.png" alt="" />
         </div>
 
         <div className="deliveryArrived">선물이 도착했어요 ✓</div>
