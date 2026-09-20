@@ -1,0 +1,11 @@
+<svg width="900" height="520" viewBox="0 0 900 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="520" rx="48" fill="#F5F7FA"/>
+  <rect x="46" y="46" width="808" height="428" rx="34" fill="white"/>
+  <circle cx="450" cy="202" r="82" fill="#E8F3FF"/>
+  <path d="M407 189H493V260C493 271 484 280 473 280H427C416 280 407 271 407 260V189Z" fill="#3182F6"/>
+  <path d="M398 178C398 166 408 156 420 156H480C492 156 502 166 502 178V196H398V178Z" fill="#4593F7"/>
+  <path d="M450 156V280" stroke="white" stroke-width="10"/>
+  <path d="M449 156C419 138 414 110 433 106C451 102 456 127 449 156ZM451 156C481 138 486 110 467 106C449 102 444 127 451 156Z" fill="#FF8A80"/>
+  <text x="450" y="350" text-anchor="middle" fill="#191F28" font-size="38" font-family="Arial, sans-serif" font-weight="700">작은 선물을 준비했어</text>
+  <text x="450" y="399" text-anchor="middle" fill="#8B95A1" font-size="24" font-family="Arial, sans-serif">기프티콘 이미지를 이 파일과 교체하면 돼</text>
+</svg>
