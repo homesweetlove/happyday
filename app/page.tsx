@@ -1,9 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 
-const RECIPIENT = "현은";
+const RECIPIENT = "현은아";
 const GIFT_CODE = "P86ZX479LL";
 const GIFT_NAME = "배민상품권 2만원 교환권";
 const GIFT_EXPIRES = "2026.09.25";
@@ -141,14 +140,7 @@ export default function Home() {
         <div className="road" />
 
         <div className="rider" aria-hidden="true">
-          <Image
-            src="/delivery-rider.svg"
-            alt=""
-            fill
-            sizes="(max-width: 480px) 82vw, 390px"
-            style={{ objectFit: "contain" }}
-            priority
-          />
+          <img src="/delivery-rider.svg" alt="" />
         </div>
 
         <div className="deliveryArrived">선물이 도착했어요 ✓</div>
