@@ -36,7 +36,7 @@ export default function Home() {
 
       window.setTimeout(() => {
         setPhase("celebrate");
-      }, 2700);
+      }, 4800);
     }, 850);
   };
 
