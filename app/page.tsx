@@ -61,11 +61,6 @@ export default function Home() {
       <div className="ambient ambientOne" />
       <div className="ambient ambientTwo" />
 
-      <header className="brand" aria-label="happyday">
-        <span className="brandDot" />
-        happyday
-      </header>
-
       <section className={`scene ${phase === "intro" ? "isActive" : "isHidden"}`}>
         <div className="introCard">
           <p className="eyebrow">오늘의 작은 이벤트</p>
