@@ -4,16 +4,21 @@ import Image from "next/image";
 import { useState } from "react";
 
 const RECIPIENT = "친구야";
-const GIFT_IMAGE = "/gifticon-placeholder.svg";
+const GIFT_CODE = "P86ZX479LL";
+const GIFT_NAME = "배민상품권 2만원 교환권";
+const GIFT_EXPIRES = "2026.09.25";
+const GIFT_URL = "https://kko.to/jiwAQa-6Jy";
 
 type Phase = "intro" | "cake" | "delivery" | "celebrate";
 
 export default function Home() {
   const [phase, setPhase] = useState<Phase>("intro");
   const [blown, setBlown] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   const openCake = () => {
     setBlown(false);
+    setCopied(false);
     setPhase("cake");
   };
 
@@ -37,7 +42,18 @@ export default function Home() {
 
   const replay = () => {
     setBlown(false);
+    setCopied(false);
     setPhase("cake");
+  };
+
+  const copyGiftCode = async () => {
+    try {
+      await navigator.clipboard.writeText(GIFT_CODE);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 1800);
+    } catch {
+      setCopied(false);
+    }
   };
 
   return (
@@ -184,33 +200,42 @@ export default function Home() {
             <div className="giftTopline">
               <div>
                 <p>FOR YOU</p>
-                <strong>생일 선물 🎁</strong>
+                <strong>{GIFT_NAME}</strong>
               </div>
-
-              <span className="giftPill">HAPPY BIRTHDAY</span>
+              <span className="giftPill">BAEMIN GIFT</span>
             </div>
 
-            <div className="giftImageFrame">
-              <Image
-                src={GIFT_IMAGE}
-                alt="생일 기프티콘"
-                fill
-                sizes="(max-width: 520px) 88vw, 420px"
-                priority
-              />
+            <div className="giftCodePanel">
+              <span className="giftCodeLabel">선물코드</span>
+              <strong className="giftCodeValue">{GIFT_CODE}</strong>
+              <button className="copyButton" onClick={copyGiftCode}>
+                {copied ? "복사했어 ✓" : "코드 복사"}
+              </button>
+            </div>
+
+            <div className="giftMeta">
+              <div>
+                <span>등록 기한</span>
+                <strong>{GIFT_EXPIRES}</strong>
+              </div>
+              <div>
+                <span>등록 방법</span>
+                <strong>카카오톡 선물함 → 선물코드 등록</strong>
+              </div>
             </div>
 
             <a
-              className="downloadButton"
-              href={GIFT_IMAGE}
-              download="birthday-gift"
+              className="redeemButton"
+              href={GIFT_URL}
+              target="_blank"
+              rel="noreferrer"
             >
-              <span aria-hidden="true">↓</span>
-              기프티콘 이미지 저장하기
+              선물 등록하러 가기
+              <span aria-hidden="true">→</span>
             </a>
 
             <p className="giftNote">
-              실제 기프티콘 이미지를 public 폴더에 넣고 GIFT_IMAGE 경로만 바꾸면 돼.
+              위 버튼이 안 열리면 선물코드를 복사해서 카카오톡 선물함에 직접 등록하면 돼.
             </p>
           </div>
 
