@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 
-const RECIPIENT = "친구야";
+const RECIPIENT = "현은";
 const GIFT_CODE = "P86ZX479LL";
 const GIFT_NAME = "배민상품권 2만원 교환권";
 const GIFT_EXPIRES = "2026.09.25";
@@ -144,8 +144,9 @@ export default function Home() {
           <Image
             src="/delivery-rider.svg"
             alt=""
-            width={640}
-            height={360}
+            fill
+            sizes="(max-width: 480px) 82vw, 390px"
+            style={{ objectFit: "contain" }}
             priority
           />
         </div>
