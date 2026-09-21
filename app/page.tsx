@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 
-const RECIPIENT = "현은아";
-const GIFT_CODE = "P86ZX479LL";
-const GIFT_NAME = "배민상품권 2만원 교환권";
-const GIFT_EXPIRES = "2026.09.25";
-const GIFT_URL = "https://kko.to/jiwAQa-6Jy";
+const RECIPIENT = "친구명";
+const GIFT_CODE = "선물하기 코드";
+const GIFT_NAME = "상품명";
+const GIFT_EXPIRES = "카카오 선물하기 링크 유효기간";
+const GIFT_URL = "카카오 선물하기 링크";
 
 type Phase = "intro" | "cake" | "delivery" | "celebrate";
 
@@ -172,7 +172,7 @@ export default function Home() {
           </h2>
 
           <p className="message">
-            임용 준비하느라 정말 고생 많지.
+            요즘 고생 많지? 
             <br />
             오늘만큼은 잠깐 쉬어가도 돼.
             <br />
